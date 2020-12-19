@@ -7,7 +7,7 @@ module.exports = {
         const [count] = await connection('events')
             .count();
         
-        console.log(count);
+        //console.log(count);
         
         const events = await connection('events')
             .join('contractor', 'contractor.id', '=', 'events.events_id' )
@@ -32,6 +32,8 @@ module.exports = {
     async create(request, response){
         const { title, date, description, local, value } = request.body;
         const events_id = request.headers.authorization;
+
+        
 
         const [id] = await connection('events').insert({
             title, 
